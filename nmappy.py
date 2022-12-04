@@ -1,5 +1,5 @@
 '''
-nmappy
+nmappy python nmap tool
 '''
 
 print("<options>")
@@ -9,9 +9,10 @@ print("<options>")
 
 what_ports = input(f'PORT / PORT RANGE:\n\t>>')
 what_ip = input(f'IP:\n\t>>')
-what_options = input('NMAP OPTIONS:\n\t>>')
+what_options = input(f'NMAP OPTIONS:\n\t>>')
 
 #initiate scan
 
-#print output
 
+
+#print output
