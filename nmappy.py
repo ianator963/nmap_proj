@@ -2,17 +2,21 @@
 nmappy python nmap tool
 '''
 
-print("<options>")
+import nmap
 
-#take user input
-#	- ports/ port range, IP address, nmap options
+print("<options>")
 
 what_ports = input(f'PORT / PORT RANGE:\n\t>>')
 what_ip = input(f'IP:\n\t>>')
 what_options = input(f'NMAP OPTIONS:\n\t>>')
 
-#initiate scan
+nm = nmap.PortScanner()
 
+new_scan = nm.scan(what_ip, what_ports)
+print(new_scan)
+
+
+#initiate scan
 
 
 #print output
