@@ -7,4 +7,3 @@ checklist:
 - ports/ port range, IP address, nmap options
 3. initiate scan
 4. print output in readable way
-

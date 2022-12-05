@@ -48,8 +48,19 @@ scanner = nmap.PortScanner()
 
 res = scanner.scan(target, t_ports)
 
-print("\n" + scanner.command_line())
+# print(f'\nTARGET IS: {scanner[target].state()}')
+# print(f'\n{scanner.command_line()}')
 
+for host in scanner.all_hosts():
+     print('\n\nHost : %s (%s)' % (host, scanner[host].hostname()))
+     print('State : %s' % scanner[host].state())
+     for proto in scanner[host].all_protocols():
+         print('----------')
+         print('Protocol : %s' % proto)
+ 
+         lport = scanner[host][proto].keys()
+         for port in lport:
+             print ('port : %s\tstate : %s' % (port, scanner[host][proto][port]['state']))
 
 
 
