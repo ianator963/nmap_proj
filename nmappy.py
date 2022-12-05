@@ -44,7 +44,7 @@ def initer():
 	commander = input("\n>>")
 	if commander == "nmappy out":
 		return
-	else:
+	elif commander == "nmappy init":
 		print("\nEnter the information you would like to scan with. For help type \"help\"\n")
 
 		target = str(helpip())
