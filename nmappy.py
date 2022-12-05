@@ -17,8 +17,6 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNO0WMMMMMMMMMWXOKWMK:.,OMMMMNd'..,OWMXc..dWMMXl..'
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXKXWMMMMMWNKKXWMMWNKKNMMMMNXKXWMMMMNKXNMWXKXWMMMMMMMMMNKKXWWXKKNMMMMMMMMMMWXKXWMMMMMMMMMMMMMWXKXNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n\
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
 
-print("\nEnter the information you would like to scan with. For help type \"help\"\n")
-
 
 def helport():
 	what_ports = input(f'PORT / PORT RANGE:\n\t>>')
@@ -41,28 +39,39 @@ def helpopt():
 		helpopt()
 	return what_options
 
-target = str(helpip())
-t_ports = helport()
 
-scanner = nmap.PortScanner()
+def initer():
+	commander = input("\n>>")
+	if commander == "nmappy out":
+		return
+	else:
+		while commander == "nmappy init":
+			print("\nEnter the information you would like to scan with. For help type \"help\"\n")
 
-res = scanner.scan(target, t_ports)
+			target = str(helpip())
+			t_ports = helport()
 
-# print(f'\nTARGET IS: {scanner[target].state()}')
-# print(f'\n{scanner.command_line()}')
+			scanner = nmap.PortScanner()
 
-for host in scanner.all_hosts():
-     print('\n\nHost : %s (%s)' % (host, scanner[host].hostname()))
-     print('State : %s' % scanner[host].state())
-     for proto in scanner[host].all_protocols():
-         print('----------')
-         print('Protocol : %s' % proto)
- 
-         lport = scanner[host][proto].keys()
-         for port in lport:
-             print ('port : %s\tstate : %s' % (port, scanner[host][proto][port]['state']))
+			res = scanner.scan(target, t_ports)
 
+			# print(f'\nTARGET IS: {scanner[target].state()}')
+			# print(f'\n{scanner.command_line()}')
 
+			for host in scanner.all_hosts():
+			     print('\n\nHost : %s (%s)' % (host, scanner[host].hostname()))
+			     print('State : %s' % scanner[host].state())
+			     for proto in scanner[host].all_protocols():
+			         print('----------')
+			         print('Protocol : %s' % proto)
+			 
+			         lport = scanner[host][proto].keys()
+			         for port in lport:
+			             print ('port : %s\tstate : %s' % (port, scanner[host][proto][port]['state']))
+	initer()
+	
+
+initer()
 
 #initiate scan
 
